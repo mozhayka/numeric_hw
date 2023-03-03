@@ -19,10 +19,13 @@ public:
 
 void Statistics::update(float x) 
 {
-    if (n == 0) {
+    if (n == 0) 
+    {
         _min = x;
         _max = x;
-    } else {
+    } 
+    else 
+    {
         _min = std::min(x, _min);
         _max = std::max(x, _max);
     }
