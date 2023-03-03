@@ -1,25 +1,26 @@
 #include <algorithm>
 
 class Statistics {
-  int n = 0;
-  float _min = 0;
-  float _max = 0;
-  float _sum = 0;
-  float _mean = 0;
-  float M = 0;
+    int n = 0;
+    float _min = 0;
+    float _max = 0;
+    float _sum = 0;
+    float _mean = 0;
+    float M = 0;
 public:
-  void update(float x);            // добавить новый элемент
-  int count() const noexcept;
-  float min() const noexcept;
-  float max() const noexcept;
-  float sum() const noexcept;
-  float mean() const noexcept;     // среднее
-  float variance() const noexcept; // дисперсия
+    void update(float x);            // добавить новый элемент
+    int count() const noexcept;
+    float min() const noexcept;
+    float max() const noexcept;
+    float sum() const noexcept;
+    float mean() const noexcept;     // среднее
+    float variance() const noexcept; // дисперсия
 };
 
 void Statistics::update(float x) 
-{
-    if (n == 0) 
+{   
+    n++;
+    if (n == 1) 
     {
         _min = x;
         _max = x;
@@ -30,7 +31,6 @@ void Statistics::update(float x)
         _max = std::max(x, _max);
     }
     _sum += x;
-    n++;
 
     float new_mean = _mean + (x - _mean) / (float) n;
     M += (x - _mean) * (x - new_mean);
